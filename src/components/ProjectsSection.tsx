@@ -69,40 +69,6 @@ const NUSA_SLIDES: SlideItem[] = [
   },
 ];
 
-/* ── DB Laundry slides ── */
-const DB_LAUNDRY_SLIDES: SlideItem[] = [
-  {
-    src: "/db-laundry-1.png",
-    alt: "LaundryYuk — Halaman Utama",
-    caption: "Halaman Utama — LaundryYuk",
-  },
-  {
-    src: "/db-laundry-7.png",
-    alt: "LaundryYuk — Form Buat Pesanan",
-    caption: "Form Buat Pesanan dengan Kalender Penjemputan",
-  },
-  {
-    src: "/db-laundry-6.png",
-    alt: "LaundryYuk — Pesanan Dalam Proses",
-    caption: "Halaman Pesanan Dalam Proses",
-  },
-  {
-    src: "/db-laundry-2.png",
-    alt: "LaundryYuk — Daftar Layanan",
-    caption: "Daftar Layanan Cuci",
-  },
-  {
-    src: "/db-laundry-erd.jpg",
-    alt: "DB Laundry — Entity Relationship Diagram (ERD)",
-    caption: "Entity Relationship Diagram (ERD) — 4 Tabel Utama",
-  },
-  {
-    src: "/db-laundry-norm.jpg",
-    alt: "DB Laundry — Proses Normalisasi UNF hingga 3NF",
-    caption: "Normalisasi UNF → 1NF → 2NF → 3NF",
-  },
-];
-
 const PROJECTS = [
   {
     index: "01",
@@ -127,18 +93,6 @@ const PROJECTS = [
       "An intelligent web application for automatically detecting rare endemic Indonesian fauna and classifying their conservation status (IUCN Red List). Utilizes the Ultralytics YOLOv8 Computer Vision model deployed via a FastAPI microservice with interactive bounding-box rendering on an HTML5 canvas.",
     tech: ["Python", "Ultralytics YOLOv8", "FastAPI", "PyTorch", "HTML5 Canvas", "JavaScript"],
     github: "https://github.com/carlosachanta/nusa-fauna",
-  },
-  {
-    index: "03",
-    year: "2025",
-    slides: DB_LAUNDRY_SLIDES,
-    title: "DB Laundry",
-    subtitle: "Relational Database Design & Normalization System",
-    role: "Database Designer",
-    description:
-      "A MySQL relational database project developed collaboratively with BINUS University students to manage retail purchase transaction systems. Covers functional dependency analysis, normalization stages from Unnormalized Form (UNF) to Third Normal Form (3NF) to eliminate data anomalies and redundancy, and ERD design across four main tables: Pelanggan, Barang, Nota, and Detail Pesanan. Also implements advanced SQL programming including Stored Procedures for purchase history, User-Defined Functions for calculations, Aggregate Queries with JOIN, and Triggers for real-time automatic transaction total updates.",
-    tech: ["MySQL", "Stored Procedures", "Triggers", "User-Defined Functions", "ERD", "Normalization (3NF)", "Aggregate Queries"],
-    github: "https://github.com/clozz11",
   },
 ];
 

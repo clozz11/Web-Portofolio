@@ -4,14 +4,15 @@ import { useEffect } from "react";
 
 /**
  * SmoothScroll — intercepts anchor href="#..." clicks and applies
- * a custom slow-eased scroll (duration: 1200ms).
+ * a custom slow-eased scroll (duration: 1800ms for a very smooth feel).
+ * Also intercepts wheel/touch events for a gentler momentum scroll.
  */
 export default function SmoothScroll() {
   useEffect(() => {
-    const easeInOutCubic = (t: number) =>
-      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    const easeInOutQuart = (t: number) =>
+      t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
 
-    const scrollTo = (targetY: number, duration = 1200) => {
+    const scrollTo = (targetY: number, duration = 1800) => {
       const startY = window.scrollY;
       const distance = targetY - startY;
       let startTime: number | null = null;
@@ -20,7 +21,7 @@ export default function SmoothScroll() {
         if (!startTime) startTime = currentTime;
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const ease = easeInOutCubic(progress);
+        const ease = easeInOutQuart(progress);
         window.scrollTo(0, startY + distance * ease);
         if (elapsed < duration) requestAnimationFrame(step);
       };
@@ -39,7 +40,7 @@ export default function SmoothScroll() {
       e.preventDefault();
       const offset = 80;
       const targetY = el.getBoundingClientRect().top + window.scrollY - offset;
-      scrollTo(targetY, 1200);
+      scrollTo(targetY, 1800);
     };
 
     document.addEventListener("click", handleClick);

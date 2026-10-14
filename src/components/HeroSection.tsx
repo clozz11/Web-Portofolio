@@ -7,7 +7,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[95vh] flex flex-col justify-center pt-24 pb-20 overflow-hidden"
+      className="relative min-h-[95vh] flex flex-col justify-center pt-24 pb-16 sm:pb-20 overflow-hidden"
     >
       {/* Hero radial glow */}
       <div
@@ -18,18 +18,18 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 max-w-4xl">
+      <div className="relative z-10 max-w-4xl w-full">
         {/* ── Availability Badge ── */}
-        <div className="animate-badge inline-flex items-center gap-2.5 mb-10 px-4 py-2 rounded-full border border-green-400/25 bg-green-400/5 text-green-400 text-sm font-semibold">
+        <div className="animate-badge inline-flex items-center gap-2.5 mb-8 sm:mb-10 px-4 py-2 rounded-full border border-green-400/25 bg-green-400/5 text-green-400 text-xs sm:text-sm font-semibold">
           <span className="w-2 h-2 rounded-full bg-green-400 dot-pulse" />
           Available for Internship &amp; Collaboration
         </div>
 
         {/* ── Profile Photo + University ── */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5 mb-7 sm:mb-8">
           <div className="relative flex-shrink-0 animate-float">
             <div
-              className="relative w-32 h-32 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-2xl overflow-hidden border-2 border-green-400/35"
+              className="relative w-24 h-24 sm:w-36 sm:h-36 lg:w-44 lg:h-44 rounded-2xl overflow-hidden border-2 border-green-400/35 glow-pulse-img"
               style={{ boxShadow: "0 0 50px rgba(0,232,122,0.3), 0 0 100px rgba(0,232,122,0.12)" }}
             >
               <Image
@@ -54,45 +54,47 @@ export default function HeroSection() {
         </div>
 
         {/* ── Hero Name (line-by-line reveal animation) ── */}
-        <h1 className="font-heading font-extrabold leading-[0.88] tracking-tighter text-white mb-8"
-            style={{ fontSize: "clamp(2.8rem, 8vw, 6.5rem)" }}>
+        <h1
+          className="font-heading font-extrabold leading-[0.88] tracking-tighter text-white mb-7 sm:mb-8"
+          style={{ fontSize: "clamp(2.4rem, 8vw, 6.5rem)" }}
+        >
           <span className="hero-line"><span>CARLOS</span></span>
           <span className="hero-line text-green-400"><span>ACHANTA</span></span>
           <span className="hero-line"><span>ZAKKY</span></span>
         </h1>
 
         {/* ── Subtitle ── */}
-        <p className="text-base sm:text-lg text-slate-400 max-w-xl leading-relaxed mb-10">
+        <p className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl leading-relaxed mb-8 sm:mb-10">
           Backend Developer focused on building{" "}
           <span className="text-slate-200 font-medium">robust RESTful APIs</span>,
           scalable backend architectures, and efficient relational database systems.
         </p>
 
         {/* ── CTA Buttons ── */}
-        <div className="flex flex-wrap items-center gap-4 mb-16">
+        <div className="hero-cta-group flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 mb-12 sm:mb-16">
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-green-400 text-black font-bold text-sm hover:bg-green-500 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-green-400 text-black font-bold text-sm hover:bg-green-500 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
             style={{ boxShadow: "0 0 30px rgba(0,232,122,0.3)" }}
           >
             View Projects <ArrowRight className="w-4 h-4" />
           </a>
           <a
             href="mailto:carloszakky27@gmail.com"
-            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl border border-green-400/25 text-green-400 font-semibold text-sm hover:bg-green-400/8 hover:border-green-400/45 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border border-green-400/25 text-green-400 font-semibold text-sm hover:bg-green-400/8 hover:border-green-400/45 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
           >
             <Mail className="w-4 h-4" /> Contact Me
           </a>
         </div>
 
         {/* ── Stats Row ── */}
-        <div className="flex flex-wrap items-center gap-8 sm:gap-12 pt-8 border-t border-white/5">
+        <div className="hero-stats flex flex-wrap items-center gap-6 sm:gap-12 pt-8 border-t border-white/5">
           <div className="animate-stats stats-delay-1">
             <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">2+</div>
             <div className="text-xs text-slate-500 mt-1.5 uppercase tracking-widest">Full-Stack Projects</div>
           </div>
 
-          <div className="w-px h-10 bg-white/8 hidden sm:block" />
+          <div className="divider w-px h-10 bg-white/8 hidden sm:block" />
 
           <div className="animate-stats stats-delay-2 relative group cursor-default">
             <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">20+</div>
@@ -103,7 +105,7 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="w-px h-10 bg-white/8 hidden sm:block" />
+          <div className="divider w-px h-10 bg-white/8 hidden sm:block" />
 
           <div className="animate-stats stats-delay-3">
             <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">3+</div>
@@ -111,7 +113,7 @@ export default function HeroSection() {
           </div>
 
           {/* Social links */}
-          <div className="flex items-center gap-2 ml-auto">
+          <div className="flex items-center gap-2 sm:ml-auto mt-2 sm:mt-0">
             <a
               href="https://github.com/clozz11"
               target="_blank"

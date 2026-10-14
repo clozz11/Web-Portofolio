@@ -26,7 +26,7 @@ export default function ActivitiesSection() {
   return (
     <section id="activities" className="py-24 scroll-mt-20">
       {/* ── Section Header ── */}
-      <div className="mb-14 reveal">
+      <div className="mb-14 reveal-on-scroll">
         <span className="text-green-400 text-xs font-extrabold uppercase tracking-[0.35em]">
           03 / Activities
         </span>
@@ -40,15 +40,15 @@ export default function ActivitiesSection() {
         {/* Vertical green line */}
         <div className="absolute left-[5px] top-3 bottom-3 w-px bg-gradient-to-b from-green-400/50 via-green-400/20 to-transparent" />
 
-        <div className="space-y-10 pl-10">
+        <div className="space-y-10 pl-8 sm:pl-10">
           {ACTIVITIES.map((act, i) => (
             <div
               key={act.role}
-              className={`relative group reveal delay-${(i + 1) * 100}`}
+              className={`relative group reveal-on-scroll delay-${i + 1}`}
             >
               {/* Timeline dot */}
               <div
-                className={`absolute -left-10 top-1.5 w-3 h-3 rounded-full border-2 transition-all duration-300 ${
+                className={`absolute -left-8 sm:-left-10 top-1.5 w-3 h-3 rounded-full border-2 transition-all duration-300 ${
                   i === 0
                     ? "bg-green-400 border-green-400 dot-active"
                     : "bg-forest-950 border-green-400/40 group-hover:border-green-400 group-hover:bg-green-400/20"
@@ -56,14 +56,14 @@ export default function ActivitiesSection() {
               />
 
               {/* Card */}
-              <div className="p-6 rounded-2xl card-glow">
+              <div className="p-5 sm:p-6 rounded-2xl card-glow card-tilt">
                 {/* Period */}
                 <span className="inline-block text-xs font-extrabold uppercase tracking-widest text-green-400 mb-3">
                   {act.period}
                 </span>
 
                 {/* Role */}
-                <h3 className="text-base sm:text-lg font-bold text-white font-heading leading-snug group-hover:text-green-400 transition-colors duration-200">
+                <h3 className="text-sm sm:text-base lg:text-lg font-bold text-white font-heading leading-snug group-hover:text-green-400 transition-colors duration-200">
                   {act.role}
                 </h3>
 

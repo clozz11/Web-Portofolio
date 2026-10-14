@@ -2,7 +2,7 @@ export default function AboutSection() {
   return (
     <section id="about" className="py-24 scroll-mt-20">
       {/* ── Section Header ── */}
-      <div className="mb-14 reveal">
+      <div className="mb-14 reveal-on-scroll">
         <span className="text-green-400 text-xs font-extrabold uppercase tracking-[0.35em]">
           01 / About
         </span>
@@ -11,9 +11,9 @@ export default function AboutSection() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 items-start">
         {/* ── Story Text ── */}
-        <div className="lg:col-span-3 space-y-5 text-slate-400 leading-relaxed text-base reveal-left delay-100">
+        <div className="lg:col-span-3 space-y-5 text-slate-400 leading-relaxed text-sm sm:text-base reveal-on-scroll from-left delay-1">
           <p>
             Hi! I am a Computer Science student with a deep passion for
             server-side software engineering (
@@ -41,7 +41,7 @@ export default function AboutSection() {
         </div>
 
         {/* ── Info Cards ── */}
-        <div className="lg:col-span-2 space-y-3 reveal-right delay-200">
+        <div className="lg:col-span-2 space-y-3 reveal-on-scroll from-right delay-2">
           {[
             {
               label: "Focus Area",
@@ -67,7 +67,7 @@ export default function AboutSection() {
           ].map((card) => (
             <div
               key={card.label}
-              className={`p-5 rounded-2xl border transition-all duration-300 ${
+              className={`p-5 rounded-2xl border transition-all duration-300 card-tilt ${
                 card.highlight
                   ? "border-green-400/30 bg-green-400/5 hover:border-green-400/50"
                   : "card-glow"

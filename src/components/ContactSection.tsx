@@ -2,19 +2,30 @@
 
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { Send, CheckCircle2, Mail, AlertCircle, Loader2 } from "lucide-react";
+import { Send, CheckCircle2, Mail, AlertCircle, Loader2, ExternalLink } from "lucide-react";
 
-/* -- EmailJS credentials --------------------------------------
-   1. Daftar di https://www.emailjs.com/ (gratis 200 email/bln)
-   2. Buat Service  ? dapat SERVICE_ID
-   3. Buat Template ? dapat TEMPLATE_ID  (variabel: from_name, from_email, message)
-   4. Copy Public Key ? ganti PUBLIC_KEY di bawah
-   ------------------------------------------------------------ */
-const EMAILJS_SERVICE_ID  = "service_REPLACE_ME";   // ? ganti
-const EMAILJS_TEMPLATE_ID = "template_REPLACE_ME";  // ? ganti
-const EMAILJS_PUBLIC_KEY  = "PUBLIC_KEY_HERE";       // ? ganti
+/* ────────────────────────────────────────────────────────────
+   EmailJS SETUP — Ikuti langkah berikut agar bisa terima email:
+   1. Buka https://www.emailjs.com/ → Daftar gratis (200 email/bln)
+   2. Dashboard → "Email Services" → Add New Service → pilih Gmail/Outlook
+      → Connect → Copy Service ID → paste di EMAILJS_SERVICE_ID
+   3. Dashboard → "Email Templates" → Create New Template
+      → Isi template dengan variabel: {{from_name}}, {{from_email}}, {{message}}
+      → Contoh body:
+          Nama: {{from_name}}
+          Email pengirim: {{from_email}}
+          Pesan: {{message}}
+      → Copy Template ID → paste di EMAILJS_TEMPLATE_ID
+   4. Dashboard → "Account" → General → Copy Public Key
+      → paste di EMAILJS_PUBLIC_KEY
+   ──────────────────────────────────────────────────────────── */
+
+const EMAILJS_SERVICE_ID  = "service_REPLACE_ME";   // ← ganti dengan Service ID kamu
+const EMAILJS_TEMPLATE_ID = "template_REPLACE_ME";  // ← ganti dengan Template ID kamu
+const EMAILJS_PUBLIC_KEY  = "PUBLIC_KEY_HERE";       // ← ganti dengan Public Key kamu
 
 const CORRECT_EMAIL = "carloszakky27@gmail.com";
+const GITHUB_URL    = "https://github.com/clozz11";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -24,24 +35,27 @@ export default function ContactSection() {
   const [status, setStatus]     = useState<Status>("idle");
   const [errMsg, setErrMsg]     = useState("");
 
+  const isConfigured =
+    !EMAILJS_SERVICE_ID.includes("REPLACE") &&
+    !EMAILJS_TEMPLATE_ID.includes("REPLACE") &&
+    !EMAILJS_PUBLIC_KEY.includes("HERE");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
     setErrMsg("");
 
-    /* If EmailJS is not configured yet, fall back to mailto */
-    if (
-      EMAILJS_SERVICE_ID.includes("REPLACE") ||
-      EMAILJS_TEMPLATE_ID.includes("REPLACE") ||
-      EMAILJS_PUBLIC_KEY.includes("HERE")
-    ) {
+    if (!isConfigured) {
+      /* Fallback: buka aplikasi email default pengguna */
       const mailtoUrl = `mailto:${CORRECT_EMAIL}?subject=${encodeURIComponent(
         "Portfolio Message from " + formData.name
       )}&body=${encodeURIComponent(
-        `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+        `Nama: ${formData.name}\nEmail: ${formData.email}\n\nPesan:\n${formData.message}`
       )}`;
       setStatus("success");
-      setTimeout(() => { window.location.href = mailtoUrl; }, 700);
+      setTimeout(() => {
+        window.open(mailtoUrl, "_blank");
+      }, 600);
       setFormData({ name: "", email: "", message: "" });
       return;
     }
@@ -55,11 +69,14 @@ export default function ContactSection() {
       );
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
+      setTimeout(() => setStatus("idle"), 6000);
     } catch (err: unknown) {
       console.error("EmailJS error:", err);
-      setErrMsg("Gagal mengirim pesan. Coba hubungi langsung via email.");
+      setErrMsg(
+        "Gagal mengirim pesan. Silakan hubungi langsung via email di bawah."
+      );
       setStatus("error");
+      setTimeout(() => setStatus("idle"), 6000);
     }
   };
 
@@ -68,33 +85,34 @@ export default function ContactSection() {
 
   return (
     <section id="contact" className="py-24 scroll-mt-20">
-      {/* -- Section Header -- */}
-      <div className="mb-14 text-center reveal">
+      {/* ── Section Header ── */}
+      <div className="mb-14 text-center reveal-on-scroll">
         <span className="text-green-400 text-xs font-extrabold uppercase tracking-[0.35em] label-pop">
           06 / Contact
         </span>
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mt-3 font-heading leading-tight">
           Let&apos;s Work Together
         </h2>
-        <p className="mt-5 text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
+        <p className="mt-5 text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
           Tertarik berkolaborasi, mendiskusikan proyek backend, atau punya peluang kerja / internship?
           Kirim pesan langsung — saya akan menerima email-mu ke inbox saya.
         </p>
 
-        {/* -- Direct Contact Options -- */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-8 reveal delay-200">
+        {/* ── Direct Contact Options ── */}
+        <div className="flex flex-wrap items-center justify-center gap-3 mt-8 reveal-on-scroll delay-2">
           <a
             href={`mailto:${CORRECT_EMAIL}`}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-green-400/25 bg-green-400/5 text-green-400 text-sm font-semibold hover:bg-green-400/10 hover:border-green-400/40 hover:scale-[1.03] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-green-400/25 bg-green-400/5 text-green-400 text-sm font-semibold hover:bg-green-400/10 hover:border-green-400/40 hover:scale-[1.03] transition-all duration-200"
           >
             <Mail className="w-4 h-4" />
-            {CORRECT_EMAIL}
+            <span className="hidden sm:inline">{CORRECT_EMAIL}</span>
+            <span className="sm:hidden">Email</span>
           </a>
           <a
-            href="https://github.com/clozz11"
+            href={GITHUB_URL}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/8 bg-white/3 text-slate-400 text-sm font-semibold hover:text-green-400 hover:border-green-400/20 hover:scale-[1.03] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/8 bg-white/3 text-slate-400 text-sm font-semibold hover:text-green-400 hover:border-green-400/20 hover:scale-[1.03] transition-all duration-200"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
@@ -106,7 +124,7 @@ export default function ContactSection() {
             href="https://linkedin.com/in/carlos-achanta"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-white/8 bg-white/3 text-slate-400 text-sm font-semibold hover:text-green-400 hover:border-green-400/20 hover:scale-[1.03] transition-all duration-200"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/8 bg-white/3 text-slate-400 text-sm font-semibold hover:text-green-400 hover:border-green-400/20 hover:scale-[1.03] transition-all duration-200"
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -118,20 +136,41 @@ export default function ContactSection() {
         </div>
       </div>
 
-      {/* -- Contact Form -- */}
+      {/* ── Contact Form ── */}
       <div
-        className="max-w-2xl mx-auto p-8 sm:p-10 rounded-3xl card-glow reveal delay-300"
+        className="max-w-2xl mx-auto p-6 sm:p-10 rounded-3xl card-glow reveal-on-scroll delay-3"
         style={{ boxShadow: "0 0 60px rgba(0,232,122,0.04), 0 0 0 1px rgba(0,232,122,0.08)" }}
       >
-        <div className="flex items-center gap-3 mb-6">
+        <div className="flex items-center gap-3 mb-6 flex-wrap">
           <div className="w-2 h-2 rounded-full bg-green-400 dot-pulse" />
           <h3 className="text-lg font-bold text-white font-heading">
             Send a Direct Message
           </h3>
           <span className="ml-auto text-[10px] font-semibold px-2 py-0.5 rounded-full bg-green-400/10 border border-green-400/20 text-green-400 uppercase tracking-wider">
-            Pesan langsung ke inbox
+            {isConfigured ? "Langsung ke Inbox" : "via Email Client"}
           </span>
         </div>
+
+        {/* Setup notice — only shown when EmailJS is not yet configured */}
+        {!isConfigured && (
+          <div className="mb-5 p-4 rounded-xl bg-yellow-950/30 border border-yellow-400/20 text-yellow-200/80 text-xs flex items-start gap-3">
+            <AlertCircle className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
+            <span>
+              Form ini akan membuka aplikasi email kamu secara otomatis.{" "}
+              Untuk menerima pesan langsung ke inbox tanpa keluar dari website,{" "}
+              <a
+                href="https://www.emailjs.com/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-yellow-400 hover:underline inline-flex items-center gap-1"
+              >
+                setup EmailJS <ExternalLink className="w-3 h-3" />
+              </a>{" "}
+              dan isi credentials di{" "}
+              <code className="bg-white/10 px-1 rounded">ContactSection.tsx</code>.
+            </span>
+          </div>
+        )}
 
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
           <div className="grid sm:grid-cols-2 gap-4">
@@ -199,19 +238,27 @@ export default function ContactSection() {
 
         {/* Success */}
         {status === "success" && (
-          <div className="mt-5 p-4 rounded-xl bg-green-950/40 border border-green-400/25 text-green-200 text-sm flex items-center gap-3 reveal">
-            <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0" />
+          <div className="mt-5 p-4 rounded-xl bg-green-950/40 border border-green-400/25 text-green-200 text-sm flex items-start gap-3 reveal">
+            <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
             <span>
-              Pesan berhasil dikirim! Saya akan membalas ke <strong>{formData.email || "email kamu"}</strong> secepatnya.
+              {isConfigured
+                ? <>Pesan berhasil dikirim! Saya akan membalas secepatnya ke <strong>{formData.email || "email kamu"}</strong>.</>
+                : <>Aplikasi email kamu telah dibuka. Periksa draft dan kirim pesan ke <strong>{CORRECT_EMAIL}</strong>.</>
+              }
             </span>
           </div>
         )}
 
         {/* Error */}
         {status === "error" && (
-          <div className="mt-5 p-4 rounded-xl bg-red-950/40 border border-red-400/25 text-red-200 text-sm flex items-center gap-3 reveal">
-            <AlertCircle className="w-5 h-5 text-red-400 shrink-0" />
-            <span>{errMsg}</span>
+          <div className="mt-5 p-4 rounded-xl bg-red-950/40 border border-red-400/25 text-red-200 text-sm flex items-start gap-3 reveal">
+            <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+            <span>
+              {errMsg}{" "}
+              <a href={`mailto:${CORRECT_EMAIL}`} className="text-green-400 hover:underline">
+                {CORRECT_EMAIL}
+              </a>
+            </span>
           </div>
         )}
       </div>

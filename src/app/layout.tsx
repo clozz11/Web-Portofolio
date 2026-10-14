@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import ScrollRevealInit from "@/components/ScrollRevealInit";
+import CursorGlow from "@/components/CursorGlow";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -55,7 +57,9 @@ export default function RootLayout({
         className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased selection:bg-green-400 selection:text-black relative min-h-screen bg-forest-950`}
       >
         <div className="ambient-glow" />
+        <CursorGlow />
         <SmoothScroll />
+        <ScrollRevealInit />
         <div className="relative z-10">
           {children}
         </div>

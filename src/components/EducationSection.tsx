@@ -23,7 +23,7 @@ export default function EducationSection() {
   return (
     <section id="education" className="py-24 scroll-mt-20">
       {/* ── Section Header ── */}
-      <div className="mb-14 reveal">
+      <div className="mb-14 reveal-on-scroll">
         <span className="text-green-400 text-xs font-extrabold uppercase tracking-[0.35em]">
           04 / Education
         </span>
@@ -36,13 +36,13 @@ export default function EducationSection() {
         {EDUCATION.map((edu, i) => (
           <div
             key={edu.institution}
-            className={`group p-6 sm:p-8 rounded-3xl transition-all duration-300 reveal delay-${(i + 1) * 100} ${
+            className={`group p-5 sm:p-8 rounded-3xl transition-all duration-300 card-tilt reveal-on-scroll delay-${i + 1} ${
               edu.current
                 ? "border border-green-400/25 bg-green-400/3 hover:border-green-400/40"
                 : "card-glow"
             }`}
           >
-            <div className="flex flex-col sm:flex-row sm:items-start gap-5">
+            <div className="flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-5">
               {/* Icon */}
               <div className="flex-shrink-0">
                 <div

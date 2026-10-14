@@ -78,7 +78,7 @@ export default function ContactSection() {
         </h2>
         <p className="mt-5 text-slate-400 text-base max-w-xl mx-auto leading-relaxed">
           Tertarik berkolaborasi, mendiskusikan proyek backend, atau punya peluang kerja / internship?
-          Kirim pesan langsung — saya akan menerima email-mu ke inbox saya.
+          Kirim pesan langsung â€” saya akan menerima email-mu ke inbox saya.
         </p>
 
         {/* -- Direct Contact Options -- */}
@@ -190,7 +190,7 @@ export default function ContactSection() {
             style={{ boxShadow: "0 0 25px rgba(0,232,122,0.25)" }}
           >
             {status === "loading" ? (
-              <><Loader2 className="w-4 h-4 animate-spin" /> Sending…</>
+              <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</>
             ) : (
               <>Send Message <Send className="w-4 h-4" /></>
             )}

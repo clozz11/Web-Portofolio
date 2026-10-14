@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 /**
- * SmoothScroll — intercepts anchor href="#..." clicks and applies
+ * SmoothScroll â€” intercepts anchor href="#..." clicks and applies
  * a custom slow-eased scroll (duration: 1200ms).
  */
 export default function SmoothScroll() {

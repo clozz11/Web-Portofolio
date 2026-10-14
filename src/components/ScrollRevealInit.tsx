@@ -4,45 +4,42 @@ import { useEffect } from "react";
 
 /**
  * Global scroll-reveal initializer.
- * Must be rendered inside the page (client boundary).
- * Observes ALL .reveal / .reveal-left / .reveal-right elements
- * and adds .revealed when they enter the viewport.
+ * Observes ALL .reveal-on-scroll elements and adds .is-visible
+ * when they enter the viewport → triggers CSS transition.
  */
 export default function ScrollRevealInit() {
   useEffect(() => {
-    const selectors = ".reveal, .reveal-left, .reveal-right";
+    const selector = ".reveal-on-scroll";
 
     const runObserver = () => {
       const targets = Array.from(
-        document.querySelectorAll<HTMLElement>(selectors)
+        document.querySelectorAll<HTMLElement>(selector)
       );
-
-      if (targets.length === 0) return;
+      if (targets.length === 0) return undefined;
 
       const io = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              (entry.target as HTMLElement).classList.add("revealed");
+              (entry.target as HTMLElement).classList.add("is-visible");
               io.unobserve(entry.target);
             }
           });
         },
-        { threshold: 0.06, rootMargin: "0px 0px -20px 0px" }
+        { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
       );
 
       targets.forEach((el) => io.observe(el));
       return io;
     };
 
-    // Run once DOM is fully painted
     let io = runObserver();
 
-    // Also re-run after a short delay to catch any late-hydrated elements
+    // Re-run after hydration to catch late-mounted elements
     const timer = setTimeout(() => {
       io?.disconnect();
       io = runObserver();
-    }, 200);
+    }, 150);
 
     return () => {
       clearTimeout(timer);

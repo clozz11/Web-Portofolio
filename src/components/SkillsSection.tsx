@@ -27,7 +27,7 @@ export default function SkillsSection() {
   return (
     <section id="skills" className="py-24 scroll-mt-20">
       {/* ── Section Header ── */}
-      <div className="mb-14 reveal">
+      <div className="mb-14 reveal-on-scroll">
         <span className="text-green-400 text-xs font-extrabold uppercase tracking-[0.35em]">
           05 / Skills
         </span>
@@ -40,11 +40,11 @@ export default function SkillsSection() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {SKILL_GROUPS.map((group, i) => {
           const Icon = group.icon;
-          const delays = ["delay-100", "delay-200", "delay-300", "delay-400"];
+          const delays = ["delay-1", "delay-2", "delay-3", "delay-4"];
           return (
             <div
               key={group.title}
-              className={`group p-6 sm:p-7 rounded-3xl card-glow reveal ${delays[i]}`}
+              className={`group p-6 sm:p-7 rounded-3xl card-glow card-tilt reveal-on-scroll ${delays[i]}`}
             >
               {/* Icon + Title */}
               <div className="flex items-center gap-3 mb-5">
@@ -61,8 +61,8 @@ export default function SkillsSection() {
                 {group.skills.map((skill, j) => (
                   <span
                     key={skill}
-                    className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/4 text-slate-300 border border-white/8 hover:border-green-400/30 hover:text-green-400 hover:bg-green-400/5 transition-all duration-200 cursor-default"
-                    style={{ transitionDelay: `${j * 30}ms` }}
+                    className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/4 text-slate-300 border border-white/8 hover:border-green-400/30 hover:text-green-400 hover:bg-green-400/5 transition-all duration-200 cursor-default stagger-item"
+                    style={{ animationDelay: `${j * 50}ms` }}
                   >
                     {skill}
                   </span>
@@ -74,7 +74,7 @@ export default function SkillsSection() {
       </div>
 
       {/* ── Bottom Note ── */}
-      <p className="mt-8 text-center text-xs text-slate-600 reveal delay-500">
+      <p className="mt-8 text-center text-xs text-slate-600 reveal-on-scroll delay-5">
         Always learning &amp; exploring new technologies —{" "}
         <span className="text-green-400/60">currently exploring Docker &amp; CI/CD pipelines</span>
       </p>

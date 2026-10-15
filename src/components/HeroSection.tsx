@@ -109,11 +109,11 @@ export default function HeroSection() {
             <span className="hidden lg:block absolute bottom-[12%] left-[22%] text-[10px] font-mono text-green-400/15 select-none">&#123;&#125;</span>
           </div>
 
-          {/* Photo — transparent/cutout feel via CSS masking */}
+          {/* Photo — transparent PNG, no mask needed */}
           <div className="relative animate-float z-10">
-            <div className="relative w-56 h-64 sm:w-64 sm:h-72 lg:w-72 lg:h-80 overflow-hidden hero-photo-mask">
+            <div className="relative w-56 h-64 sm:w-64 sm:h-72 lg:w-72 lg:h-80 overflow-hidden">
               <Image
-                src="/profile-avatar.jpg"
+                src="/profile-avatar.png"
                 alt="Carlos Achanta Zakky"
                 fill
                 priority

@@ -109,24 +109,18 @@ export default function HeroSection() {
             <span className="hidden lg:block absolute bottom-[12%] left-[22%] text-[10px] font-mono text-green-400/15 select-none">&#123;&#125;</span>
           </div>
 
-          {/* Photo — transparent PNG, no mask needed */}
-          <div className="relative animate-float z-10">
-            <div className="relative w-56 h-64 sm:w-64 sm:h-72 lg:w-72 lg:h-80 overflow-hidden">
+          {/* Photo — transparent PNG, static (no float animation) */}
+          <div className="relative z-10">
+            <div className="relative w-64 h-80 sm:w-72 sm:h-[22rem] lg:w-80 lg:h-[26rem] overflow-hidden">
               <Image
                 src="/profile-avatar.png"
                 alt="Carlos Achanta Zakky"
                 fill
                 priority
-                sizes="(max-width: 640px) 14rem, (max-width: 1024px) 16rem, 18rem"
+                sizes="(max-width: 640px) 16rem, (max-width: 1024px) 18rem, 20rem"
                 className="object-cover object-top"
               />
             </div>
-
-            {/* Online indicator */}
-            <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-forest-950/80 border border-green-400/25 backdrop-blur-sm text-[10px] font-bold uppercase tracking-wider text-green-400">
-              <span className="w-1.5 h-1.5 rounded-full bg-green-400 dot-pulse" />
-              Online
-            </span>
           </div>
         </div>
 

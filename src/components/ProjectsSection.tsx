@@ -1,6 +1,5 @@
 import { ExternalLink } from "lucide-react";
 import ProjectSlider, { SlideItem } from "./ProjectSlider";
-import GitHubProfile from "./GitHubProfile";
 
 /* ── Edja Corner slides ── */
 const EDJA_SLIDES: SlideItem[] = [
@@ -123,9 +122,6 @@ export default function ProjectsSection() {
           </article>
         ))}
       </div>
-
-      {/* ── GitHub Profile Card ── */}
-      <GitHubProfile />
     </section>
   );
 }

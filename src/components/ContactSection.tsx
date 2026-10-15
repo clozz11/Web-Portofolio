@@ -121,7 +121,7 @@ export default function ContactSection() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/carlos-achanta"
+            href="https://www.linkedin.com/in/carlos-achanta-zakky-9b69aa325/"
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/8 bg-white/3 text-slate-400 text-sm font-semibold hover:text-green-400 hover:border-green-400/20 hover:scale-[1.03] transition-all duration-200"

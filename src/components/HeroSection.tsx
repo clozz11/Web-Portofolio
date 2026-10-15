@@ -127,7 +127,7 @@ export default function HeroSection() {
               </svg>
             </a>
             <a
-              href="https://linkedin.com/in/carlos-achanta"
+              href="https://www.linkedin.com/in/carlos-achanta-zakky-9b69aa325/"
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"

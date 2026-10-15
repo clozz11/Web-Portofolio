@@ -4,6 +4,7 @@ import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollRevealInit from "@/components/ScrollRevealInit";
 import CursorGlow from "@/components/CursorGlow";
+import LoadingScreen from "@/components/LoadingScreen";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${plusJakartaSans.variable} font-sans antialiased selection:bg-green-400 selection:text-black relative min-h-screen bg-forest-950`}
       >
+        <LoadingScreen />
         <div className="ambient-glow" />
         <CursorGlow />
         <SmoothScroll />

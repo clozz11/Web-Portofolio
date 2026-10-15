@@ -536,3 +536,27 @@ button:focus-visible {
     animation: none !important;
   }
 }
+
+/* ─── Loading Screen Animations ──────────────────────────── */
+@keyframes loadingLogoReveal {
+  0%   { opacity: 0; transform: scale(0.8) translateY(10px); }
+  40%  { opacity: 1; transform: scale(1.05) translateY(0); }
+  60%  { transform: scale(0.98); }
+  100% { transform: scale(1); }
+}
+.loading-logo-reveal {
+  animation: loadingLogoReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes loadingBar {
+  0%   { width: 0%; }
+  60%  { width: 70%; }
+  100% { width: 100%; }
+}
+.loading-bar {
+  animation: loadingBar 1.2s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+.duration-600 {
+  transition-duration: 600ms;
+}

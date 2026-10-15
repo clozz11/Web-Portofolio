@@ -45,8 +45,8 @@ export default function HeroSection() {
             scalable backend architectures, and efficient relational database systems.
           </p>
 
-          {/* ── CTA Buttons ── */}
-          <div className="hero-cta-group flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4">
+          {/* ── CTA Buttons — row 1 ── */}
+          <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4">
             <a
               href="#projects"
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-green-400 text-black font-bold text-sm hover:bg-green-500 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
@@ -60,6 +60,9 @@ export default function HeroSection() {
             >
               <Mail className="w-4 h-4" /> Contact Me
             </a>
+          </div>
+          {/* ── Download Resume — row 2, aligned right under Contact Me ── */}
+          <div className="flex justify-center sm:justify-end lg:justify-start sm:max-w-[26rem] mt-3">
             <a
               href="/resume-carlos.pdf"
               download

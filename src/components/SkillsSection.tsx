@@ -75,7 +75,7 @@ export default function SkillsSection() {
 
       {/* ── Bottom Note ── */}
       <p className="mt-8 text-center text-xs text-slate-600 reveal-on-scroll delay-5">
-        Always learning &amp; exploring new technologies —{" "}
+        Learning &amp; exploring new technologies —{" "}
         <span className="text-green-400/60">currently exploring Docker &amp; CI/CD pipelines</span>
       </p>
     </section>

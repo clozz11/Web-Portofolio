@@ -483,3 +483,49 @@ img { max-width: 100%; height: auto; }
   border-radius: 2px;
 }
 
+
+/* ─── Hero decorative rotating ring ──────────────────────── */
+@keyframes heroRingSpin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+.hero-ring-slow {
+  animation: heroRingSpin 40s linear infinite;
+}
+
+/* ─── Button press / interactive feedback ───────────────── */
+.btn-press {
+  transition: transform 0.18s cubic-bezier(0.16,1,0.3,1), box-shadow 0.2s ease, background-color 0.2s ease;
+}
+.btn-press:active { transform: scale(0.96); }
+
+/* ─── Focus-visible ring (accessibility) ────────────────── */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(0,232,122,0.6);
+  outline-offset: 2px;
+  border-radius: 0.5rem;
+}
+
+/* ─── Reduced motion: respect user preference ───────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .hero-ring-slow,
+  .animate-float,
+  .glow-pulse-img,
+  .particle,
+  .dot-pulse {
+    animation: none !important;
+  }
+}

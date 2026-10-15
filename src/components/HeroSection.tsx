@@ -64,7 +64,7 @@ export default function HeroSection() {
         </div>
 
         {/* ══════════ RIGHT: Photo cutout + ornaments ══════════ */}
-        <div className="order-1 lg:order-2 relative flex justify-center items-center py-8 sm:py-10 lg:py-0">
+        <div className="order-1 lg:order-2 relative flex justify-center items-end py-0 lg:py-0">
           {/* Decorative ornaments layer */}
           <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
             {/* Big gradient glow blob */}
@@ -100,16 +100,16 @@ export default function HeroSection() {
             <span className="hidden lg:block absolute bottom-[12%] left-[22%] text-[10px] font-mono text-green-400/15 select-none">&#123;&#125;</span>
           </div>
 
-          {/* Photo — transparent PNG, static, cropped to upper body */}
-          <div className="relative z-10">
-            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] overflow-hidden rounded-2xl">
+          {/* Photo — transparent PNG, shows down to arms, aligned to bottom of ornament area */}
+          <div className="relative z-10 self-end">
+            <div className="relative w-72 h-[22rem] sm:w-80 sm:h-[26rem] lg:w-[22rem] lg:h-[30rem] overflow-hidden">
               <Image
                 src="/profile-avatar.png"
                 alt="Carlos Achanta Zakky"
                 fill
                 priority
                 sizes="(max-width: 640px) 18rem, (max-width: 1024px) 20rem, 22rem"
-                className="object-cover object-top scale-[1.15]"
+                className="object-contain object-bottom"
               />
             </div>
           </div>

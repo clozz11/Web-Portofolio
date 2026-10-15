@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Mail, Download } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -59,6 +59,13 @@ export default function HeroSection() {
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border border-green-400/25 text-green-400 font-semibold text-sm hover:bg-green-400/8 hover:border-green-400/45 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
             >
               <Mail className="w-4 h-4" /> Contact Me
+            </a>
+            <a
+              href="/resume-carlos.pdf"
+              download
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border border-white/10 text-slate-300 font-semibold text-sm hover:text-green-400 hover:border-green-400/30 hover:bg-green-400/5 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
+            >
+              <Download className="w-4 h-4" /> Download Resume
             </a>
           </div>
         </div>

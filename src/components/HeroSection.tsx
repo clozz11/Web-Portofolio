@@ -40,7 +40,6 @@ export default function HeroSection() {
                 className="object-cover object-top"
               />
             </div>
-            {/* Online indicator */}
             <span className="absolute -bottom-1.5 -right-1.5 w-5 h-5 rounded-full bg-green-400 border-2 border-forest-950 dot-pulse" />
           </div>
 
@@ -53,7 +52,7 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* ── Hero Name (line-by-line reveal animation) ── */}
+        {/* ── Hero Name ── */}
         <h1
           className="font-heading font-extrabold leading-[0.88] tracking-tighter text-white mb-7 sm:mb-8"
           style={{ fontSize: "clamp(2.4rem, 8vw, 6.5rem)" }}
@@ -87,39 +86,42 @@ export default function HeroSection() {
           </a>
         </div>
 
-        {/* ── Stats Row ── */}
-        <div className="hero-stats flex flex-wrap items-center gap-6 sm:gap-12 pt-8 border-t border-white/5">
-          <div className="animate-stats stats-delay-1">
-            <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">2+</div>
-            <div className="text-xs text-slate-500 mt-1.5 uppercase tracking-widest">Full-Stack Projects</div>
-          </div>
+        {/* ── Stats + Socials ── */}
+        <div className="pt-8 border-t border-white/5">
 
-          <div className="divider w-px h-10 bg-white/8 hidden sm:block" />
+          {/* Stats — centered on mobile */}
+          <div className="flex items-center justify-center sm:justify-start gap-5 sm:gap-12">
+            <div className="animate-stats stats-delay-1 text-center sm:text-left">
+              <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">2+</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 mt-1 uppercase tracking-widest">Full-Stack Projects</div>
+            </div>
 
-          <div className="animate-stats stats-delay-2 relative group cursor-default">
-            <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">20+</div>
-            <div className="text-xs text-slate-500 mt-1.5 uppercase tracking-widest">API Endpoints</div>
-            {/* Tooltip on hover */}
-            <div className="absolute bottom-full left-0 mb-2 w-64 px-3 py-2 rounded-lg bg-forest-800 border border-green-400/15 text-xs text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-xl">
-              Auth, product, cart, order, stock, &amp; AI detection endpoints built across multiple projects
+            <div className="w-px h-10 bg-white/8" />
+
+            <div className="animate-stats stats-delay-2 text-center sm:text-left relative group cursor-default">
+              <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">20+</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 mt-1 uppercase tracking-widest">API Endpoints</div>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 sm:left-0 sm:translate-x-0 mb-2 w-56 px-3 py-2 rounded-lg bg-forest-800 border border-green-400/15 text-xs text-slate-300 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-xl">
+                Auth, product, cart, order, stock &amp; AI detection endpoints
+              </div>
+            </div>
+
+            <div className="w-px h-10 bg-white/8" />
+
+            <div className="animate-stats stats-delay-3 text-center sm:text-left">
+              <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">3+</div>
+              <div className="text-[10px] sm:text-xs text-slate-500 mt-1 uppercase tracking-widest">Leadership Roles</div>
             </div>
           </div>
 
-          <div className="divider w-px h-10 bg-white/8 hidden sm:block" />
-
-          <div className="animate-stats stats-delay-3">
-            <div className="text-3xl sm:text-4xl font-extrabold font-heading stat-number">3+</div>
-            <div className="text-xs text-slate-500 mt-1.5 uppercase tracking-widest">Leadership Roles</div>
-          </div>
-
-          {/* Social links */}
-          <div className="flex items-center gap-2 sm:ml-auto mt-2 sm:mt-0">
+          {/* Social buttons — centered on mobile, icon-only compact */}
+          <div className="flex items-center justify-center sm:justify-start gap-2 mt-4">
             <a
               href="https://github.com/clozz11"
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
-              className="p-2.5 rounded-xl border border-white/8 text-slate-500 hover:text-green-400 hover:border-green-400/25 hover:bg-green-400/5 transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-xl border border-white/8 text-slate-500 hover:text-green-400 hover:border-green-400/25 hover:bg-green-400/5 transition-all duration-200"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
@@ -131,7 +133,7 @@ export default function HeroSection() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="p-2.5 rounded-xl border border-white/8 text-slate-500 hover:text-green-400 hover:border-green-400/25 hover:bg-green-400/5 transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-xl border border-white/8 text-slate-500 hover:text-green-400 hover:border-green-400/25 hover:bg-green-400/5 transition-all duration-200"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
@@ -140,6 +142,7 @@ export default function HeroSection() {
               </svg>
             </a>
           </div>
+
         </div>
       </div>
     </section>

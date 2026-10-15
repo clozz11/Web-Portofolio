@@ -64,7 +64,7 @@ export default function HeroSection() {
           {/* ── Download Resume — row 2, aligned right under Contact Me ── */}
           <div className="flex justify-center sm:justify-end lg:justify-start sm:max-w-[26rem] mt-3">
             <a
-              href="/resume-carlos.pdf"
+              href="/Resume Carlos.pdf"
               download
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl border border-white/10 text-slate-300 font-semibold text-sm hover:text-green-400 hover:border-green-400/30 hover:bg-green-400/5 hover:scale-[1.03] active:scale-[0.97] transition-all duration-200"
             >

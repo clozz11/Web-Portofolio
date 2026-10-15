@@ -28,15 +28,6 @@ export default function HeroSection() {
             Available for Internship &amp; Collaboration
           </div>
 
-          {/* ── University line ── */}
-          <div className="text-sm text-slate-500 leading-relaxed mb-5">
-            <span className="text-slate-300 font-semibold">Computer Science</span>
-            &nbsp;·&nbsp;
-            <span className="text-green-400 font-semibold">BINUS University</span>
-            <br />
-            <span className="text-slate-600 text-xs">Malang, East Java, Indonesia · GMT+7</span>
-          </div>
-
           {/* ── Hero Name ── */}
           <h1
             className="font-heading font-extrabold leading-[0.88] tracking-tighter text-white mb-6 sm:mb-7"
@@ -118,7 +109,7 @@ export default function HeroSection() {
                 fill
                 priority
                 sizes="(max-width: 640px) 16rem, (max-width: 1024px) 18rem, 20rem"
-                className="object-cover object-top"
+                className="object-contain object-bottom"
               />
             </div>
           </div>

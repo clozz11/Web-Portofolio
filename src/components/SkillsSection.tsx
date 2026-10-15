@@ -73,11 +73,6 @@ export default function SkillsSection() {
         })}
       </div>
 
-      {/* ── Bottom Note ── */}
-      <p className="mt-8 text-center text-xs text-slate-600 reveal-on-scroll delay-5">
-        Learning &amp; exploring new technologies —{" "}
-        <span className="text-green-400/60">currently exploring Docker &amp; CI/CD pipelines</span>
-      </p>
     </section>
   );
 }

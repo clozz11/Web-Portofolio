@@ -84,10 +84,10 @@ export default function ProjectsSection() {
                 href={project.github}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={`GitHub — ${project.title}`}
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-white/8 text-slate-500 hover:text-green-400 hover:border-green-400/25 hover:bg-green-400/5 text-xs font-semibold transition-all duration-200"
+                aria-label={`Source code — ${project.title}`}
+                className="group/src inline-flex items-center gap-1.5 px-4 py-2 rounded-xl border border-white/8 text-slate-500 hover:text-green-400 hover:border-green-400/25 hover:bg-green-400/5 hover:scale-[1.04] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-green-400/50 text-xs font-semibold transition-all duration-200"
               >
-                Source Code <ExternalLink className="w-3.5 h-3.5" />
+                Source Code <ExternalLink className="w-3.5 h-3.5 group-hover/src:translate-x-0.5 group-hover/src:-translate-y-0.5 transition-transform duration-200" />
               </a>
             </div>
 

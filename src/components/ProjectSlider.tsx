@@ -71,7 +71,7 @@ export default function ProjectSlider({ slides }: ProjectSliderProps) {
       </button>
 
       {/* ── Dot Indicators ── */}
-      <div className="absolute top-3 right-3 z-20 flex items-center gap-1 px-2 py-1 rounded-full bg-black/50 border border-white/8 backdrop-blur-sm">
+      <div className="absolute top-2.5 right-2.5 z-20 flex items-center gap-[3px] px-1.5 py-0.5 rounded-full bg-black/50 border border-white/8 backdrop-blur-sm">
         {slides.map((_, idx) => (
           <button
             key={idx}
@@ -80,8 +80,8 @@ export default function ProjectSlider({ slides }: ProjectSliderProps) {
             aria-label={`Ke slide ${idx + 1}`}
             className={`rounded-full transition-all duration-300 ${
               idx === current
-                ? "w-3 h-1.5 bg-green-400"
-                : "w-1.5 h-1.5 bg-slate-600 hover:bg-green-400/60"
+                ? "w-2.5 h-[5px] bg-green-400"
+                : "w-[5px] h-[5px] bg-slate-600 hover:bg-green-400/60"
             }`}
           />
         ))}

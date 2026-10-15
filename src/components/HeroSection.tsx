@@ -100,16 +100,16 @@ export default function HeroSection() {
             <span className="hidden lg:block absolute bottom-[12%] left-[22%] text-[10px] font-mono text-green-400/15 select-none">&#123;&#125;</span>
           </div>
 
-          {/* Photo — transparent PNG, static (no float animation) */}
+          {/* Photo — transparent PNG, static, cropped to upper body */}
           <div className="relative z-10">
-            <div className="relative w-64 h-80 sm:w-72 sm:h-[22rem] lg:w-80 lg:h-[26rem] overflow-hidden">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[22rem] lg:h-[22rem] overflow-hidden rounded-2xl">
               <Image
                 src="/profile-avatar.png"
                 alt="Carlos Achanta Zakky"
                 fill
                 priority
-                sizes="(max-width: 640px) 16rem, (max-width: 1024px) 18rem, 20rem"
-                className="object-contain object-bottom"
+                sizes="(max-width: 640px) 18rem, (max-width: 1024px) 20rem, 22rem"
+                className="object-cover object-top scale-[1.15]"
               />
             </div>
           </div>

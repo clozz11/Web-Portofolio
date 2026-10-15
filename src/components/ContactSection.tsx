@@ -2,30 +2,27 @@
 
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
-import { Send, CheckCircle2, Mail, AlertCircle, Loader2, ExternalLink } from "lucide-react";
+import { Send, CheckCircle2, Mail, AlertCircle, Loader2 } from "lucide-react";
 
 /* ────────────────────────────────────────────────────────────
-   EmailJS SETUP — Ikuti langkah berikut agar bisa terima email:
-   1. Buka https://www.emailjs.com/ → Daftar gratis (200 email/bln)
-   2. Dashboard → "Email Services" → Add New Service → pilih Gmail/Outlook
-      → Connect → Copy Service ID → paste di EMAILJS_SERVICE_ID
+   EmailJS SETUP:
+   1. Go to https://www.emailjs.com/ → Sign up free (200 emails/month)
+   2. Dashboard → "Email Services" → Add New Service → connect Gmail/Outlook
+      → Copy Service ID → paste into EMAILJS_SERVICE_ID
    3. Dashboard → "Email Templates" → Create New Template
-      → Isi template dengan variabel: {{from_name}}, {{from_email}}, {{message}}
-      → Contoh body:
-          Nama: {{from_name}}
-          Email pengirim: {{from_email}}
-          Pesan: {{message}}
-      → Copy Template ID → paste di EMAILJS_TEMPLATE_ID
+      → Use variables: {{from_name}}, {{from_email}}, {{message}}
+      → Copy Template ID → paste into EMAILJS_TEMPLATE_ID
    4. Dashboard → "Account" → General → Copy Public Key
-      → paste di EMAILJS_PUBLIC_KEY
+      → paste into EMAILJS_PUBLIC_KEY
    ──────────────────────────────────────────────────────────── */
 
-const EMAILJS_SERVICE_ID  = "service_REPLACE_ME";   // ← ganti dengan Service ID kamu
-const EMAILJS_TEMPLATE_ID = "template_REPLACE_ME";  // ← ganti dengan Template ID kamu
-const EMAILJS_PUBLIC_KEY  = "PUBLIC_KEY_HERE";       // ← ganti dengan Public Key kamu
+const EMAILJS_SERVICE_ID  = "service_REPLACE_ME";
+const EMAILJS_TEMPLATE_ID = "template_REPLACE_ME";
+const EMAILJS_PUBLIC_KEY  = "PUBLIC_KEY_HERE";
 
 const CORRECT_EMAIL = "carloszakky27@gmail.com";
 const GITHUB_URL    = "https://github.com/clozz11";
+const LINKEDIN_URL  = "https://www.linkedin.com/in/carlos-achanta-zakky-9b69aa325/";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -46,16 +43,13 @@ export default function ContactSection() {
     setErrMsg("");
 
     if (!isConfigured) {
-      /* Fallback: buka aplikasi email default pengguna */
       const mailtoUrl = `mailto:${CORRECT_EMAIL}?subject=${encodeURIComponent(
         "Portfolio Message from " + formData.name
       )}&body=${encodeURIComponent(
-        `Nama: ${formData.name}\nEmail: ${formData.email}\n\nPesan:\n${formData.message}`
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
       )}`;
       setStatus("success");
-      setTimeout(() => {
-        window.open(mailtoUrl, "_blank");
-      }, 600);
+      setTimeout(() => { window.open(mailtoUrl, "_blank"); }, 600);
       setFormData({ name: "", email: "", message: "" });
       return;
     }
@@ -72,9 +66,7 @@ export default function ContactSection() {
       setTimeout(() => setStatus("idle"), 6000);
     } catch (err: unknown) {
       console.error("EmailJS error:", err);
-      setErrMsg(
-        "Gagal mengirim pesan. Silakan hubungi langsung via email di bawah."
-      );
+      setErrMsg("Failed to send message. Please reach out directly via email below.");
       setStatus("error");
       setTimeout(() => setStatus("idle"), 6000);
     }
@@ -94,8 +86,8 @@ export default function ContactSection() {
           Let&apos;s Work Together
         </h2>
         <p className="mt-5 text-slate-400 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
-          Tertarik berkolaborasi, mendiskusikan proyek backend, atau punya peluang kerja / internship?
-          Kirim pesan langsung — saya akan menerima email-mu ke inbox saya.
+          Interested in collaborating, discussing a backend project, or have a job / internship opportunity?
+          Send me a message — I&apos;ll get back to you as soon as possible.
         </p>
 
         {/* ── Direct Contact Options ── */}
@@ -121,7 +113,7 @@ export default function ContactSection() {
             GitHub
           </a>
           <a
-            href="https://www.linkedin.com/in/carlos-achanta-zakky-9b69aa325/"
+            href={LINKEDIN_URL}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/8 bg-white/3 text-slate-400 text-sm font-semibold hover:text-green-400 hover:border-green-400/20 hover:scale-[1.03] transition-all duration-200"
@@ -147,30 +139,9 @@ export default function ContactSection() {
             Send a Direct Message
           </h3>
           <span className="ml-auto text-[10px] font-semibold px-2 py-0.5 rounded-full bg-green-400/10 border border-green-400/20 text-green-400 uppercase tracking-wider">
-            {isConfigured ? "Langsung ke Inbox" : "via Email Client"}
+            Direct to Inbox
           </span>
         </div>
-
-        {/* Setup notice — only shown when EmailJS is not yet configured */}
-        {!isConfigured && (
-          <div className="mb-5 p-4 rounded-xl bg-yellow-950/30 border border-yellow-400/20 text-yellow-200/80 text-xs flex items-start gap-3">
-            <AlertCircle className="w-4 h-4 text-yellow-400 shrink-0 mt-0.5" />
-            <span>
-              Form ini akan membuka aplikasi email kamu secara otomatis.{" "}
-              Untuk menerima pesan langsung ke inbox tanpa keluar dari website,{" "}
-              <a
-                href="https://www.emailjs.com/"
-                target="_blank"
-                rel="noreferrer"
-                className="text-yellow-400 hover:underline inline-flex items-center gap-1"
-              >
-                setup EmailJS <ExternalLink className="w-3 h-3" />
-              </a>{" "}
-              dan isi credentials di{" "}
-              <code className="bg-white/10 px-1 rounded">ContactSection.tsx</code>.
-            </span>
-          </div>
-        )}
 
         <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
           <div className="grid sm:grid-cols-2 gap-4">
@@ -217,7 +188,7 @@ export default function ContactSection() {
               required
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              placeholder="Ceritakan tentang proyek, kolaborasi, atau peluang yang kamu tawarkan..."
+              placeholder="Tell me about your project, collaboration idea, or opportunity..."
               className={inputClass + " resize-none"}
             />
           </div>
@@ -238,12 +209,12 @@ export default function ContactSection() {
 
         {/* Success */}
         {status === "success" && (
-          <div className="mt-5 p-4 rounded-xl bg-green-950/40 border border-green-400/25 text-green-200 text-sm flex items-start gap-3 reveal">
+          <div className="mt-5 p-4 rounded-xl bg-green-950/40 border border-green-400/25 text-green-200 text-sm flex items-start gap-3">
             <CheckCircle2 className="w-5 h-5 text-green-400 shrink-0 mt-0.5" />
             <span>
               {isConfigured
-                ? <>Pesan berhasil dikirim! Saya akan membalas secepatnya ke <strong>{formData.email || "email kamu"}</strong>.</>
-                : <>Aplikasi email kamu telah dibuka. Periksa draft dan kirim pesan ke <strong>{CORRECT_EMAIL}</strong>.</>
+                ? <>Message sent successfully! I&apos;ll reply to <strong>{formData.email || "your email"}</strong> as soon as possible.</>
+                : <>Your email client has been opened. Please send the message to <strong>{CORRECT_EMAIL}</strong>.</>
               }
             </span>
           </div>
@@ -251,7 +222,7 @@ export default function ContactSection() {
 
         {/* Error */}
         {status === "error" && (
-          <div className="mt-5 p-4 rounded-xl bg-red-950/40 border border-red-400/25 text-red-200 text-sm flex items-start gap-3 reveal">
+          <div className="mt-5 p-4 rounded-xl bg-red-950/40 border border-red-400/25 text-red-200 text-sm flex items-start gap-3">
             <AlertCircle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
             <span>
               {errMsg}{" "}

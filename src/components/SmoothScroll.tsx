@@ -3,16 +3,15 @@
 import { useEffect } from "react";
 
 /**
- * SmoothScroll — intercepts anchor href="#..." clicks and applies
- * a custom slow-eased scroll (duration: 1800ms for a very smooth feel).
- * Also intercepts wheel/touch events for a gentler momentum scroll.
+ * SmoothScroll — intercepts anchor href="#..." clicks.
+ * Nav links use a snappy 800ms ease, other anchors use 1200ms.
  */
 export default function SmoothScroll() {
   useEffect(() => {
-    const easeInOutQuart = (t: number) =>
-      t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+    const easeInOutCubic = (t: number) =>
+      t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
 
-    const scrollTo = (targetY: number, duration = 1800) => {
+    const scrollTo = (targetY: number, duration: number) => {
       const startY = window.scrollY;
       const distance = targetY - startY;
       let startTime: number | null = null;
@@ -21,8 +20,7 @@ export default function SmoothScroll() {
         if (!startTime) startTime = currentTime;
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const ease = easeInOutQuart(progress);
-        window.scrollTo(0, startY + distance * ease);
+        window.scrollTo(0, startY + distance * easeInOutCubic(progress));
         if (elapsed < duration) requestAnimationFrame(step);
       };
 
@@ -38,9 +36,12 @@ export default function SmoothScroll() {
       const el = document.getElementById(id);
       if (!el) return;
       e.preventDefault();
-      const offset = 80;
-      const targetY = el.getBoundingClientRect().top + window.scrollY - offset;
-      scrollTo(targetY, 1800);
+
+      const targetY = el.getBoundingClientRect().top + window.scrollY - 80;
+
+      // Nav bar links → snappy 800ms, other anchors (CTA buttons etc) → 1200ms
+      const isNavLink = anchor.closest("header") !== null;
+      scrollTo(targetY, isNavLink ? 800 : 1200);
     };
 
     document.addEventListener("click", handleClick);

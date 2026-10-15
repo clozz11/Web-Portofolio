@@ -109,12 +109,9 @@ export default function HeroSection() {
             <span className="hidden lg:block absolute bottom-[12%] left-[22%] text-[10px] font-mono text-green-400/15 select-none">&#123;&#125;</span>
           </div>
 
-          {/* Photo — no background, cutout style */}
+          {/* Photo — transparent/cutout feel via CSS masking */}
           <div className="relative animate-float z-10">
-            <div
-              className="relative w-56 h-64 sm:w-64 sm:h-72 lg:w-72 lg:h-80 rounded-3xl overflow-hidden glow-pulse-img"
-              style={{ boxShadow: "0 0 60px rgba(0,232,122,0.2), 0 0 120px rgba(0,232,122,0.08)" }}
-            >
+            <div className="relative w-56 h-64 sm:w-64 sm:h-72 lg:w-72 lg:h-80 overflow-hidden hero-photo-mask">
               <Image
                 src="/profile-avatar.jpg"
                 alt="Carlos Achanta Zakky"
@@ -123,8 +120,6 @@ export default function HeroSection() {
                 sizes="(max-width: 640px) 14rem, (max-width: 1024px) 16rem, 18rem"
                 className="object-cover object-top"
               />
-              {/* Gradient fade at bottom for cutout feel */}
-              <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-forest-950/90 via-forest-950/40 to-transparent" />
             </div>
 
             {/* Online indicator */}

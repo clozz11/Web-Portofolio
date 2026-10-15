@@ -23,6 +23,7 @@ const EMAILJS_PUBLIC_KEY  = "PUBLIC_KEY_HERE";
 const CORRECT_EMAIL = "carloszakky27@gmail.com";
 const GITHUB_URL    = "https://github.com/clozz11";
 const LINKEDIN_URL  = "https://www.linkedin.com/in/carlos-achanta-zakky-9b69aa325/";
+const WHATSAPP_URL  = "https://wa.me/6285748097300";
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -124,6 +125,17 @@ export default function ContactSection() {
               <circle cx="4" cy="4" r="2" />
             </svg>
             LinkedIn
+          </a>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/8 bg-white/3 text-slate-400 text-sm font-semibold hover:text-green-400 hover:border-green-400/20 hover:scale-[1.03] transition-all duration-200"
+          >
+            <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+            </svg>
+            WhatsApp
           </a>
         </div>
       </div>

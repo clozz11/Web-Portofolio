@@ -16,9 +16,9 @@ import { Send, CheckCircle2, Mail, AlertCircle, Loader2 } from "lucide-react";
       → paste into EMAILJS_PUBLIC_KEY
    ──────────────────────────────────────────────────────────── */
 
-const EMAILJS_SERVICE_ID  = "service_REPLACE_ME";
-const EMAILJS_TEMPLATE_ID = "template_REPLACE_ME";
-const EMAILJS_PUBLIC_KEY  = "PUBLIC_KEY_HERE";
+const EMAILJS_SERVICE_ID  = "service_1hl7ver";
+const EMAILJS_TEMPLATE_ID = "template_y7pe9ig";
+const EMAILJS_PUBLIC_KEY  = "AW6OTvtnN-k5Kg3G4";
 
 const CORRECT_EMAIL = "carloszakky27@gmail.com";
 const GITHUB_URL    = "https://github.com/clozz11";

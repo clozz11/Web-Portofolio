@@ -40,7 +40,7 @@ export default function HeroSection() {
 
           {/* ── Subtitle ── */}
           <p className="text-sm sm:text-base lg:text-lg text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed mb-8 sm:mb-10">
-            Backend Developer focused on building{" "}
+            Backend Developer &amp; Software Engineering focused on building{" "}
             <span className="text-slate-200 font-medium">robust RESTful APIs</span>,
             scalable backend architectures, and efficient relational database systems.
           </p>

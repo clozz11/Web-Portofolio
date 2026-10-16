@@ -25,12 +25,13 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Carlos Achanta Zakky — Backend Developer & CS Student",
+  title: "Carlos Achanta Zakky — Backend Developer & Software Engineering",
   description:
-    "Portofolio Carlos Achanta Zakky — Backend Developer & mahasiswa Computer Science BINUS University. Spesialis RESTful API, arsitektur backend, dan sistem database relasional.",
+    "Portofolio Carlos Achanta Zakky — Backend Developer & Software Engineering, mahasiswa Computer Science BINUS University. Spesialis RESTful API, arsitektur backend, dan sistem database relasional.",
   keywords: [
     "Carlos Achanta Zakky",
     "Backend Developer",
+    "Software Engineering",
     "Computer Science",
     "BINUS University",
     "Node.js",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Carlos Achanta Zakky" }],
   openGraph: {
-    title: "Carlos Achanta Zakky — Backend Developer",
+    title: "Carlos Achanta Zakky — Backend Developer & Software Engineering",
     description: "Building robust APIs, scalable backend systems, and efficient database architectures.",
     type: "website",
   },
